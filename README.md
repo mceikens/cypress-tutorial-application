@@ -30,6 +30,10 @@ docker-compose exec php cp .env-dist .env
 docker-compose exec php php bin/console doctrine:migrations:migrate
 ```
 
+```bash
+docker-compose exec php php bin/console doctrine:fixtures:load --group=tutorial
+```
+
 ### Using it
 This application comes with "ready to use" containers. But the used containers not production ready. If you want to use containers for your application in production, please contact us.
 

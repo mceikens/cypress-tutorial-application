@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars list{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="header">
+                    <h1>List of Cars</h1>
+                </div>
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Transmission</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in cars %}
+                            <tr>
+                                <td>{{ car.id }}</td>
+                                <td>{{ car.type }}</td>
+                                <td>{{ car.color }}</td>
+                                <td>{{ car.price }}</td>
+                                <td>{{ car.transmission }}</td>
+                                <td>{{ car.location }}</td>
+                                <td>
+                                    <ul class="nav nav-pills nav-fill">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('app_cars_detail', {'id': car.id})}}">Detail</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('app_cars_edit', {'id': car.id})}}">Edit</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('app_cars_delete', {'id': car.id})}}">Remove</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

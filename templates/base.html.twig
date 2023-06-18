@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/bootstrap-grid.min.css" />
+        <link rel="stylesheet" href="/assets/bootstrap-utilities.min.css" />
         {% block stylesheets %}
         {% endblock %}
 
@@ -11,6 +14,42 @@
         {% endblock %}
     </head>
     <body>
+    <div class="container">
+        <div class="col-12">
+            <ul class="nav">
+                {% if ('index' not in app.request.get('_route')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cars_index')}}">Back to index</a>
+                    </li>
+                {% endif %}
+                {% if ('detail' not in app.request.get('_route') and 'index' not in app.request.get('_route') and 'new' not in app.request.get('_route') and 'edit' not in app.request.get('_route')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cars_detail', {'id': car.id})}}">Detail</a>
+                    </li>
+                {% endif %}
+                {% if ('edit' not in app.request.get('_route') and 'index' not in app.request.get('_route') and 'new' not in app.request.get('_route') and 'edit' not in app.request.get('_route')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cars_edit', {'id': car.id})}}">Edit</a>
+                    </li>
+                {% endif %}
+                {% if ('new' not in app.request.get('_route')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cars_new')}}">New</a>
+                    </li>
+                {% endif %}
+
+                {% if ('new' not in app.request.get('_route') and 'index' not in app.request.get('_route') and 'edit' not in app.request.get('_route')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cars_delete', {'id': car.id})}}">Delete</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
         {% block body %}{% endblock %}
+
+        <script src="/assets/bootstrap.min.js" />
+        <script src="/assets/bootstrap.bundle.min.js" />
     </body>
 </html>

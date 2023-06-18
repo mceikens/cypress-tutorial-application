@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars Detail{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="header">
+                    <h1>New Car</h1>
+                </div>
+            </div>
+            <div class="col-12">
+                {{ form_start(form) }}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(form) }}
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4">
+                                {{ form_row(form.type, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-4">
+                                {{ form_row(form.color, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-4">
+                                {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-4">
+                                {{ form_row(form.transmission, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-4">
+                                {{ form_row(form.location, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

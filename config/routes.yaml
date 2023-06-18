@@ -3,3 +3,25 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+app_cars_index:
+    path: /cars/list
+    controller: App\Controller\Cars\IndexController
+    methods: GET
+
+app_cars_detail:
+    path: /cars/detail/{id}
+    controller: App\Controller\Cars\DetailController
+    methods: GET
+
+app_cars_edit:
+    path: /cars/edit/{id}
+    controller: App\Controller\Cars\EditController
+
+app_cars_new:
+    path: /cars/new
+    controller: App\Controller\Cars\NewController
+
+app_cars_delete:
+    path: /cars/delete/{id}
+    controller: App\Controller\Cars\DeleteController

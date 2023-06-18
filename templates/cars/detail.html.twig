@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars Detail{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="header">
+                    <h1>Detail of Car #{{car.id}}</h1>
+                </div>
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Transmission</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ car.id }}</td>
+                            <td>{{ car.type }}</td>
+                            <td>{{ car.color }}</td>
+                            <td>{{ car.price }}</td>
+                            <td>{{ car.transmission }}</td>
+                            <td>{{ car.location }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
