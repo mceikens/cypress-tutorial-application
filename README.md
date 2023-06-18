@@ -27,7 +27,7 @@ docker-compose exec php cp .env-dist .env
 ```
 
 ```bash
-docker-compose exec php php bin/console 
+docker-compose exec php php bin/console doctrine:migrations:migrate
 ```
 
 ### Using it
