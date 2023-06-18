@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  db:
+    image: mariadb:10.8
+    restart: on-failure
+    privileged: true
+    environment:
+      MYSQL_DATABASE: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_ROOT_PASSWORD: dev
+    networks:
+      - internal
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+    ports:
+      - 3306:3306
+  php:
+    image: mceikens/php-dev:8.1
+    privileged: true
+    restart: on-failure
+    networks:
+      - default
+      - internal
+    volumes:
+      - ./:/usr/share/nginx/html/app:rw,cached
+  nginx:
+    image: nginx:latest
+    privileged: true
+    restart: on-failure
+    networks:
+      - default
+      - internal
+    volumes:
+      - ./container/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./:/usr/share/nginx/html/app:rw,cached
+    ports:
+      - 8080:80
+
+networks:
+  internal:
+    driver: bridge
+volumes:
+  db:
+    driver: local
+
